@@ -1,0 +1,166 @@
+{
+  "schema_version": "1.0",
+  "name": "NEPRA regulatory document retrieval — evaluation set",
+  "created": "2026-09",
+  "author": "HAJIALI",
+
+  "_readme": [
+    "This file is the ground truth for the project. Treat it as the most valuable",
+    "artifact here — the pipeline can be rebuilt in a weekend, this cannot.",
+    "",
+    "RULES",
+    "  1. An answer only enters this file after being verified against the source PDF.",
+    "     Never from a news article, never from a model, never from memory.",
+    "  2. Every question records its source document and page, so retrieval accuracy",
+    "     and answer accuracy can be scored SEPARATELY. This is the whole point.",
+    "  3. Questions the system is expected to fail are the valuable ones. Keep them.",
+    "  4. Freeze this file before each experiment. If you edit questions to match",
+    "     what your system happens to answer well, the number becomes meaningless.",
+    "",
+    "SCORING",
+    "  retrieval_hit  — did the correct source page appear in the top-k chunks?",
+    "  answer_correct — is the final answer right, including sign and unit?",
+    "",
+    "  Score both. A system can retrieve perfectly and still answer wrong (a",
+    "  reasoning failure), or answer right from the wrong page (luck, not skill).",
+    "  Reporting a single blended accuracy number hides both.",
+    "",
+    "UNITS",
+    "  State the unit on every numeric answer. The corpus mixes millions and",
+    "  billions, and the unit often lives in a column header far from the value.",
+    "",
+    "NEXT",
+    "  Grow to 40+ questions once the corpus expands to 40+ quarterly decisions.",
+    "  The near-duplicate confusion between quarters cannot be measured at this size."
+  ],
+
+  "corpus_version": "v1 — 5 tariff/SRO documents, downloaded 2026-09",
+  "corpus_notes": [
+    "Annual Report 2022-23 and State of Industry Report 2023 were deliberately",
+    "EXCLUDED. They are a different document genre (long statistical reports vs",
+    "short decisions) and contain nearly all the scanned, non-extractable pages.",
+    "Mixing genres would contaminate every measurement."
+  ],
+
+  "corpus_documents": [
+    "SRO 1248 (I) 2026 Dated 29-07-2026",
+    "SRO 1390 (I) 2026 Dated 10-08-2026",
+    "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+    "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 Dated 07-08-2025",
+    "TRF-615 CPPA-G MARKET OPERATOR FEE FOR FY 2024-25"
+  ],
+
+  "failure_mode_taxonomy": {
+    "column_mapping": "OCR corrupts table headers (e.g. 'Hzscot isco' for HESCO + IESCO), so a value cannot be reliably matched to its column.",
+    "sign_handling": "Accounting parentheses denote negative values. Read as positive, the answer is inverted — the most dangerous error class in this corpus.",
+    "number_corruption": "OCR alters digits or separators: (3.319) for (3,319), or commas dropped entirely as in (15026).",
+    "unit_in_header": "The unit (millions, billions, Rs/kW/month) appears in a header row far from the figure. Chunking separates them and the number loses meaning.",
+    "split_row_label": "A row label wraps across two lines ('Impact of T&D Losses on / monthly FCA') and chunking severs it from its values.",
+    "small_text_extraction": "Low-contrast or small print extracts unreliably.",
+    "aggregation": "Requires summing or cross-checking multiple values rather than locating one.",
+    "temporal_disambiguation": "Several dates or fiscal periods appear close together; the right one must be selected. Becomes the dominant failure mode as the corpus grows.",
+    "cross_document": "The answer lives in a different document than the one most similar to the question.",
+    "underspecified_question": "The question admits several defensible answers (requested vs allowed, including vs excluding charges). A flaw in the question, not the system.",
+    "refusal": "The corpus does not contain the answer. The only correct behaviour is to say so."
+  },
+
+  "questions": [
+    {
+      "id": "q001",
+      "question": "What was the total quarterly adjustment for MEPCO in the 4th quarter of FY 2024-25?",
+      "answer": "-8,467 million rupees (negative)",
+      "unit": "PKR million",
+      "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "source_page": 2,
+      "failure_mode": "column_mapping",
+      "notes": "Header row is OCR-corrupted. The system must map the 6th value in the row to MEPCO without a reliable header."
+    },
+    {
+      "id": "q002",
+      "question": "Did QESCO's total quarterly adjustment increase or decrease in Q4 FY 2024-25?",
+      "answer": "Increased. QESCO is the only DISCO with a positive value: +3,594 million rupees. All others are negative.",
+      "unit": "PKR million",
+      "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "source_page": 2,
+      "failure_mode": "sign_handling",
+      "notes": "Tests whether parentheses are read as negative, and whether the single exception in a row is spotted."
+    },
+    {
+      "id": "q003",
+      "question": "What was PESCO's capacity charges figure for Q4 FY 2024-25?",
+      "answer": "-3,319 million rupees",
+      "unit": "PKR million",
+      "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "source_page": 2,
+      "failure_mode": "number_corruption",
+      "notes": "Extracted text reads (3.319) with a decimal point. Correct value is 3,319. A system trusting the extraction is wrong by a factor of 1000."
+    },
+    {
+      "id": "q004",
+      "question": "What was the total negative quarterly adjustment allowed across all XWDISCOs for Q4 FY 2024-25?",
+      "answer": "-53,393 million rupees",
+      "unit": "PKR million",
+      "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "source_page": 1,
+      "failure_mode": "aggregation",
+      "notes": "Verified: the ten DISCO values sum exactly to this total. That arithmetic check can be automated as a validation rule later. Other sources quote a different figure for this quarter — worth investigating once the corpus expands."
+    },
+    {
+      "id": "q005",
+      "question": "Which period does the 4th quarter of FY 2024-25 cover?",
+      "answer": "April to June 2025",
+      "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "source_page": 2,
+      "failure_mode": "temporal_disambiguation",
+      "notes": "Trivial at 5 documents. Becomes the hardest question in the set once 40 near-identical quarterly decisions are present."
+    },
+    {
+      "id": "q006",
+      "question": "How much was the capacity charge reduction attributed to debt reprofiling of the K-2 and K-3 nuclear plants?",
+      "answer": "34 billion rupees",
+      "unit": "PKR billion",
+      "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "source_page": 3,
+      "failure_mode": "unit_in_header",
+      "notes": "The unit appears in the column header, not beside the figure. A chunk that splits the header from the value loses the unit and the answer becomes meaningless."
+    },
+    {
+      "id": "q007",
+      "question": "What was the circular debt payable to power producers for FY 2023-24, and for FY 2024-25?",
+      "answer": "FY 2023-24 (Jul 23 to Jun 24): 1,600 billion rupees. FY 2024-25 (Jul 24 to Jun 25): 861 billion rupees.",
+      "unit": "PKR billion",
+      "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "source_page": 5,
+      "failure_mode": "small_text_extraction",
+      "notes": "Small, low-contrast print. Also a two-period comparison: both values must be returned correctly paired to their fiscal years, not merely found."
+    },
+    {
+      "id": "q008",
+      "question": "On what date did the Authority decide the Federal Government's Motion for a uniform consumer-end tariff?",
+      "answer": "July 11, 2024",
+      "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "source_page": 2,
+      "failure_mode": "temporal_disambiguation",
+      "notes": "Three dates sit within two sentences: June 14 2024 (tariff determination), July 11 2024 (Motion decided), July 1 2024 (effective date). Retrieval will find the paragraph; the question is whether the right date is selected from it. Cleanly separates retrieval failure from reasoning failure."
+    },
+    {
+      "id": "q009",
+      "question": "What market operation fee per kW per month did the Authority ALLOW CPPA-G for FY 2024-25, including legal charges?",
+      "answer": "REFUSAL — the corpus does not contain this information.",
+      "unit": "Rs per kW per month",
+      "source_doc": "TRF-615 CPPA-G MARKET OPERATOR FEE FOR FY 2024-25",
+      "source_page": null,
+      "failure_mode": "refusal",
+      "notes": "Left blank deliberately — this value must come from your own reading of the document, not from me or from a news report. If your 7-page file is the covering letter rather than the full 33-page determination, change the answer to 'REFUSAL — not present in corpus' and set failure_mode to 'refusal'. Original phrasing ('what fee did the Authority determine') was underspecified: requested vs allowed and including vs excluding legal charges give four defensible answers. The rewrite removes that ambiguity."
+    },
+    {
+      "id": "q010",
+      "question": "What was the quarterly tariff adjustment for FESCO in the 1st quarter of FY 2025-26?",
+      "answer": "REFUSAL — the corpus does not contain this information.",
+      "source_doc": null,
+      "source_page": null,
+      "failure_mode": "refusal",
+      "notes": "A near-miss by design. FESCO is in the corpus, quarterly adjustments are in the corpus, and the phrasing matches answerable questions exactly. Only the period is absent. Retrieval will confidently return the Q4 FY2024-25 table and the model will very likely answer from it. A system that invents a figure here is the one that loses a client."
+    }
+  ]
+}
