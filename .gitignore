@@ -1,0 +1,69 @@
+# ---------------------------------------------------------------------
+# Python environment
+# ---------------------------------------------------------------------
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.Python
+
+# ---------------------------------------------------------------------
+# Generated artifacts — rebuildable from source, do not commit
+# ---------------------------------------------------------------------
+# The vector index. vectors.npy is binary and large; git cannot diff it
+# and it regenerates from build_index.py in under a minute.
+# index_meta.json IS worth keeping (see the un-ignore below) because it
+# records the config that produced a result.
+index/
+!index/index_meta.json
+
+# Text dumps produced while inspecting PDFs
+*.extracted.txt
+
+# ---------------------------------------------------------------------
+# Source corpus
+# ---------------------------------------------------------------------
+# Public NEPRA documents, but large binaries. Keep the manifest in
+# CORPUS.md so the corpus is reconstructible; do not put PDFs in git.
+knowledge_Base/
+*.pdf
+
+# ---------------------------------------------------------------------
+# What is DELIBERATELY NOT ignored
+# ---------------------------------------------------------------------
+# eval_set_v*.json      ground truth — the most valuable file here
+# results_*.json        every run, with its eval_hash and index config.
+#                       These are the evidence behind any accuracy claim
+#                       you make. Committing them is what lets you say
+#                       "52% to 71%" and have it be checkable.
+# CORPUS.md             version manifest and hashes
+# requirements.txt      pinned dependencies, part of reproducibility
+# *.py                  the pipeline
+
+# ---------------------------------------------------------------------
+# Secrets — nothing here yet, but generation will need API keys
+# ---------------------------------------------------------------------
+.env
+.env.*
+*.key
+secrets.json
+
+# ---------------------------------------------------------------------
+# Editors and OS noise
+# ---------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ---------------------------------------------------------------------
+# Model caches, if they ever land inside the project
+# ---------------------------------------------------------------------
+.cache/
+models/
+*.onnx
+*.safetensors

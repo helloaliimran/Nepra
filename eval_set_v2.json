@@ -1,9 +1,23 @@
 {
   "schema_version": "1.0",
+  "eval_version": "v2",
   "name": "NEPRA regulatory document retrieval — evaluation set",
   "created": "2026-09",
   "author": "HAJIALI",
-
+  "changelog": [
+    {
+      "version": "v1",
+      "date": "2026-09",
+      "note": "Initial 10 questions built from the SRO 1468 DISCO adjustment table. Baseline retrieval scored hit@1 0.00, hit@3 0.125, hit@5 0.25, hit@10 0.50.",
+      "status": "INVALID — superseded by v2"
+    },
+    {
+      "version": "v2",
+      "date": "2026-09",
+      "note": "Corrected source_page values. v1 recorded PRINTED page labels rather than PDF page indices. SRO 1468 opens with an unnumbered cover page, so the DISCO adjustment table sits at PDF index 2, not 1. Six of eight scored questions therefore had wrong ground truth, and every v1 retrieval score was measuring a ground-truth indexing error rather than retrieval quality. No questions were added, removed, or reworded — only page indices changed.",
+      "status": "CURRENT"
+    }
+  ],
   "_readme": [
     "This file is the ground truth for the project. Treat it as the most valuable",
     "artifact here — the pipeline can be rebuilt in a weekend, this cannot.",

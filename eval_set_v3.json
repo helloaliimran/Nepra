@@ -1,0 +1,189 @@
+{
+  "schema_version": "2.0",
+  "eval_version": "v3",
+  "name": "NEPRA regulatory document retrieval — evaluation set",
+  "created": "2026-09",
+  "author": "HAJIALI",
+  "status": "DRAFT — fill the TRF-100 page numbers, then freeze",
+
+  "changelog": [
+    {
+      "version": "v1",
+      "note": "Initial 10 questions from the SRO 1468 DISCO adjustment table. Baseline hit@1 0.00, hit@3 0.125, hit@5 0.25, hit@10 0.50.",
+      "status": "INVALID — page indices wrong"
+    },
+    {
+      "version": "v2",
+      "note": "Corrected source_page from printed page labels to PDF page indices. SRO 1468 opens with an unnumbered cover page. Scores rose to hit@1 0.00, hit@3 0.25, hit@5 0.75, hit@10 1.00.",
+      "status": "SUPERSEDED"
+    },
+    {
+      "version": "v3",
+      "note": "Introduced acceptable_sources. TRF-100 (the Authority's determination) and SRO 1468 (the gazette notification of that same determination) contain the SAME DISCO adjustment table. v2 scored only SRO 1468 as correct, so a retriever returning the identical table from TRF-100 was marked wrong. That measured document preference, not retrieval quality, and it was the systematic cause of hit@1 = 0/8. A question is now a hit if ANY acceptable source is retrieved. Schema bumped to 2.0: source_doc/source_page are replaced by acceptable_sources.",
+      "status": "CURRENT"
+    }
+  ],
+
+  "page_number_convention": "page is the PDF PAGE INDEX, 1-based, counting every physical page including unnumbered covers. NOT the label printed in the footer.",
+
+  "_readme": [
+    "GROUND TRUTH. Verified against source PDFs only.",
+    "",
+    "acceptable_sources — every {doc, page} where the answer genuinely appears.",
+    "  A retrieval is a hit if ANY of them is returned. Regulatory corpora are",
+    "  full of duplication: determinations, notifications, and SROs restate the",
+    "  same tables. Insisting on one canonical location measures the wrong thing.",
+    "",
+    "  The FIRST entry is the primary source, used when reporting which document",
+    "  a citation should prefer. The rest are equally correct for scoring.",
+    "",
+    "RULES",
+    "  1. Nothing enters this file unverified against the PDF.",
+    "  2. Retrieval and answer accuracy are scored separately.",
+    "  3. Expected failures are the valuable questions. Keep them.",
+    "  4. FROZEN means frozen. Errors become v4 with a changelog entry.",
+    "",
+    "KNOWN WEAKNESS IN SCORING CODE",
+    "  Document matching is by token overlap at 0.6. Once 40 near-identical",
+    "  quarterly decisions are indexed this will match the wrong quarter",
+    "  ('4th' vs '3rd' is the only differing token). Replace with explicit",
+    "  doc_id matching BEFORE expanding the corpus."
+  ],
+
+  "corpus_version": "v1 — 5 tariff/SRO documents",
+  "corpus_documents": [
+    "SRO 1248 (I) 2026 Dated 29-07-2026",
+    "SRO 1390 (I) 2026 Dated 10-08-2026",
+    "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+    "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 Dated 07-08-2025",
+    "TRF-615 CPPA-G MARKET OPERATOR FEE FOR FY 2024-25"
+  ],
+  "known_duplicates": [
+    "TRF-100 and SRO 1468 cover the same Q4 FY2024-25 determination. The DISCO adjustment table is identical in both."
+  ],
+
+  "failure_mode_taxonomy": {
+    "column_mapping": "OCR corrupts table headers, so a value cannot be reliably matched to its column.",
+    "sign_handling": "Accounting parentheses denote negatives. Read as positive, the answer inverts.",
+    "number_corruption": "OCR alters digits or separators: (3.319) for (3,319).",
+    "unit_in_header": "The unit sits in a header row far from the figure; chunking separates them.",
+    "split_row_label": "A row label wraps across two lines and chunking severs it from its values.",
+    "small_text_extraction": "Low-contrast or small print extracts unreliably.",
+    "aggregation": "Requires summing or cross-checking several values.",
+    "temporal_disambiguation": "Several dates or periods appear close together; the right one must be selected.",
+    "cross_document": "The answer lives in a different document than the one most similar to the question.",
+    "duplicate_source": "The answer appears in more than one document. Tests whether scoring credits any valid location.",
+    "refusal": "The corpus does not contain the answer. The only correct behaviour is to say so."
+  },
+
+  "questions": [
+    {
+      "id": "q001",
+      "question": "What was the total quarterly adjustment for MEPCO in the 4th quarter of FY 2024-25?",
+      "answer": "-8,477 million rupees (negative)",
+      "unit": "PKR million",
+      "acceptable_sources": [
+        {"doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25", "page": 2},
+        {"doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25", "page": 2}
+      ],
+      "failure_mode": "column_mapping",
+      "notes": "Header row is OCR-corrupted. The 6th value in the row must be mapped to MEPCO without a reliable header."
+    },
+    {
+      "id": "q002",
+      "question": "Did QESCO's total quarterly adjustment increase or decrease in Q4 FY 2024-25?",
+      "answer": "Increased. QESCO is the only DISCO with a positive value: +3,594 million rupees. All others are negative.",
+      "unit": "PKR million",
+      "acceptable_sources": [
+        {"doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25", "page": 2},
+        {"doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25", "page": 2}
+      ],
+      "failure_mode": "sign_handling",
+      "notes": "Failed in v2 because top-1 was TRF-100. If TRF-100 carries the same table, this was never a retrieval failure."
+    },
+    {
+      "id": "q003",
+      "question": "What was PESCO's capacity charges figure for Q4 FY 2024-25?",
+      "answer": "-3,319 million rupees",
+      "unit": "PKR million",
+      "acceptable_sources": [
+        {"doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25", "page": 2},
+        {"doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25", "page": null, "_todo": "FILL"}
+      ],
+      "failure_mode": "number_corruption",
+      "notes": "Extraction reads (3.319) with a decimal point. Correct value is 3,319 — a system trusting the extraction is wrong by 1000x."
+    },
+    {
+      "id": "q004",
+      "question": "What was the total negative quarterly adjustment allowed across all XWDISCOs for Q4 FY 2024-25?",
+      "answer": "-53,393 million rupees",
+      "unit": "PKR million",
+      "acceptable_sources": [
+        {"doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25", "page": 2},
+        {"doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25", "page": null, "_todo": "FILL"}
+      ],
+      "failure_mode": "aggregation",
+      "notes": "Verified: the ten DISCO values sum exactly to this total. Automatable as a validation rule later."
+    },
+    {
+      "id": "q005",
+      "question": "Which period does the 4th quarter of FY 2024-25 cover?",
+      "answer": "April to June 2025",
+      "acceptable_sources": [
+        {"doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25", "page": 2},
+        {"doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25", "page": null, "_todo": "FILL — v2 top-1 returned TRF-100 p.4"}
+      ],
+      "failure_mode": "temporal_disambiguation",
+      "notes": "Trivial at 5 documents. Becomes the hardest question once 40 near-identical quarterly decisions exist."
+    },
+    {
+      "id": "q006",
+      "question": "How much was the capacity charge reduction attributed to debt reprofiling of the K-2 and K-3 nuclear plants?",
+      "answer": "34 billion rupees",
+      "unit": "PKR billion",
+      "acceptable_sources": [
+        {"doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25", "page": 2}
+      ],
+      "failure_mode": "unit_in_header",
+      "notes": "The unit is in the column header, not beside the figure. If TRF-100 also discusses K-2/K-3 debt reprofiling, add it as a second acceptable source."
+    },
+    {
+      "id": "q007",
+      "question": "What was the circular debt payable to power producers for FY 2023-24, and for FY 2024-25?",
+      "answer": "FY 2023-24 (Jul 23 to Jun 24): 1,600 billion rupees. FY 2024-25 (Jul 24 to Jun 25): 861 billion rupees.",
+      "unit": "PKR billion",
+      "acceptable_sources": [
+        {"doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25", "page": 4}
+      ],
+      "failure_mode": "small_text_extraction",
+      "notes": "Small, low-contrast print. Both values must be returned correctly paired to their fiscal years, not merely found."
+    },
+    {
+      "id": "q008",
+      "question": "On what date did the Authority decide the Federal Government's Motion for a uniform consumer-end tariff?",
+      "answer": "July 11, 2024",
+      "acceptable_sources": [
+        {"doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25", "page": 2},
+        {"doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25", "page": null, "_todo": "FILL — the same opening paragraph likely appears in both"}
+      ],
+      "failure_mode": "temporal_disambiguation",
+      "notes": "Three dates within two sentences: June 14 2024 (determination), July 11 2024 (Motion decided), July 1 2024 (effective). Retrieval finds the paragraph; the test is whether the right date is picked from it."
+    },
+    {
+      "id": "q009",
+      "question": "What market operation fee per kW per month did the Authority ALLOW CPPA-G for FY 2024-25, including legal charges?",
+      "answer": "REFUSAL — the corpus holds the covering document, not the full determination containing the allowed figure.",
+      "acceptable_sources": [],
+      "failure_mode": "refusal",
+      "notes": "Became a refusal question once the 7-page TRF-615 file turned out to be the covering letter rather than the 33-page determination. If you later add the full determination, this returns to a cross_document question."
+    },
+    {
+      "id": "q010",
+      "question": "What was the quarterly tariff adjustment for FESCO in the 1st quarter of FY 2025-26?",
+      "answer": "REFUSAL — the corpus does not contain this information.",
+      "acceptable_sources": [],
+      "failure_mode": "refusal",
+      "notes": "A near-miss by design. FESCO is in the corpus, quarterly adjustments are in the corpus, the phrasing matches answerable questions exactly — only the period is absent. Retrieval will confidently return the Q4 FY2024-25 table. A system that invents a figure here is the one that loses a client."
+    }
+  ]
+}

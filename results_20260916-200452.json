@@ -1,0 +1,954 @@
+{
+  "run_id": "baseline-20260916-200452",
+  "timestamp": "2026-09-16T20:04:52",
+  "eval_set": "Eval_set1.json",
+  "eval_hash": "5c67c436",
+  "index_config": {
+    "chunk_size": 800,
+    "chunk_overlap": 150,
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "extractor": "pdfplumber",
+    "strategy": "fixed_char_per_page_v1"
+  },
+  "chunk_count": 301,
+  "retrieval_summary": {  
+    "hit@1": 0.0,
+    "hit@3": 0.125,
+    "hit@5": 0.25,
+    "hit@10": 0.5
+  },
+  "per_question": [
+    {
+      "id": "q001",
+      "question": "What was the total quarterly adjustment for MEPCO in the 4th quarter of FY 2024-25?",
+      "failure_mode": "column_mapping",
+      "expected_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "expected_page": 1,
+      "scored": true,
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "hit@10": false,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": 247,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 6,
+          "score": 0.6364,
+          "preview": "o Decision of the Authority in the matter of requests filed byXWDlSCOs regarding periodic adjustment in the Tariff 25^2 • ' 15. In light of the above discussion"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 200,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 6,
+          "score": 0.5932,
+          "preview": "Decision oftheAuthorir/th the matter ofrequests Bled by DISCOs regarding periodic adjusent in the Tath 15. In light of the above discussion, information submitt"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 227,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 2,
+          "score": 0.5692,
+          "preview": "77) (3.319) 3,057 (653) (2,883) (53.714) Variable O&M 28 (5) 13 (45) 1 64 29 14 78 5 182 UoSC &MoF (549) 41 (107) 126 (15) 61 676 540 111 (80) 804 Impact of T&D"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 179,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 2,
+          "score": 0.5654,
+          "preview": "or recommendation of uniform consumer end tariff. The said Motion was decided by the Authority on July 11, 2024 and was subsequently notified by the Federal Gov"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 193,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 4,
+          "score": 0.5652,
+          "preview": "alternative mechanisms for collecting provincial levies and duties rather than relying on electricity bills. Therefore, electricity duty remains applicable. Reg"
+        },
+        {
+          "rank": 6,
+          "chunk_id": 226,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 2,
+          "score": 0.5629,
+          "preview": "98 for recommendation of uniform consumer end tariff. The said Motion was decided by the Authority on July 11, 2024 and was subsequently notified by the Federal"
+        },
+        {
+          "rank": 7,
+          "chunk_id": 248,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 6,
+          "score": 0.5493,
+          "preview": "e discussion made in the above paragraphs and after considering the aforementioned adjustments, the Authority has determined separate quarterly adjustments of e"
+        },
+        {
+          "rank": 8,
+          "chunk_id": 201,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 6,
+          "score": 0.5358,
+          "preview": "the above paragraphs and after considering the aforementioned adjustments, the Authority has determined separate quarterly adjustments of each DISCO after accou"
+        },
+        {
+          "rank": 9,
+          "chunk_id": 240,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 4,
+          "score": 0.5317,
+          "preview": "plore alternative mechanisms for collecting provincial levies and duties rather than relying on electricity bills. Therefore, electricity duty remains applicabl"
+        },
+        {
+          "rank": 10,
+          "chunk_id": 180,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 2,
+          "score": 0.514,
+          "preview": ") 3,0571 (653) (2,883) (53,714) Variable 0&M 28 (5) 13 (45) 1 64 29 14 78 5 182 UcSC&MoF (549) 41 (107) 126 (15) 61 676 540 111 (80) 804 Impact of T&D Losses on"
+        }
+      ]
+    },
+    {
+      "id": "q002",
+      "question": "Did QESCO's total quarterly adjustment increase or decrease in Q4 FY 2024-25?",
+      "failure_mode": "sign_handling",
+      "expected_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "expected_page": 1,
+      "scored": true,
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "hit@10": false,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": 247,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 6,
+          "score": 0.6536,
+          "preview": "o Decision of the Authority in the matter of requests filed byXWDlSCOs regarding periodic adjustment in the Tariff 25^2 • ' 15. In light of the above discussion"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 200,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 6,
+          "score": 0.6056,
+          "preview": "Decision oftheAuthorir/th the matter ofrequests Bled by DISCOs regarding periodic adjusent in the Tath 15. In light of the above discussion, information submitt"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 248,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 6,
+          "score": 0.515,
+          "preview": "e discussion made in the above paragraphs and after considering the aforementioned adjustments, the Authority has determined separate quarterly adjustments of e"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 186,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 3,
+          "score": 0.5025,
+          "preview": "les growth. PESCO attributed its improved sales to both reduction in tariff by Rs. 7.7/kWh and captive power shifting. QESCO reported a decline in agricultural "
+        },
+        {
+          "rank": 5,
+          "chunk_id": 201,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 6,
+          "score": 0.4865,
+          "preview": "the above paragraphs and after considering the aforementioned adjustments, the Authority has determined separate quarterly adjustments of each DISCO after accou"
+        },
+        {
+          "rank": 6,
+          "chunk_id": 193,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 4,
+          "score": 0.4842,
+          "preview": "alternative mechanisms for collecting provincial levies and duties rather than relying on electricity bills. Therefore, electricity duty remains applicable. Reg"
+        },
+        {
+          "rank": 7,
+          "chunk_id": 233,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 3,
+          "score": 0.4829,
+          "preview": "g to its sales growth. PESCO attributed its improved sales to both reduction in tariff by Rs. 7.7/kWh and captive power shifting. QESCO reported a decline in ag"
+        },
+        {
+          "rank": 8,
+          "chunk_id": 227,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 2,
+          "score": 0.4798,
+          "preview": "77) (3.319) 3,057 (653) (2,883) (53.714) Variable O&M 28 (5) 13 (45) 1 64 29 14 78 5 182 UoSC &MoF (549) 41 (107) 126 (15) 61 676 540 111 (80) 804 Impact of T&D"
+        },
+        {
+          "rank": 9,
+          "chunk_id": 179,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 2,
+          "score": 0.471,
+          "preview": "or recommendation of uniform consumer end tariff. The said Motion was decided by the Authority on July 11, 2024 and was subsequently notified by the Federal Gov"
+        },
+        {
+          "rank": 10,
+          "chunk_id": 246,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 5,
+          "score": 0.4599,
+          "preview": " provided for each month of the quarter, for all plants connected with the national grid. 14. The Authority noted with concern that DISCOs (especially HESCO and"
+        }
+      ]
+    },
+    {
+      "id": "q003",
+      "question": "What was PESCO's capacity charges figure for Q4 FY 2024-25?",
+      "failure_mode": "number_corruption",
+      "expected_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "expected_page": 1,
+      "scored": true,
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "hit@10": false,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": 226,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 2,
+          "score": 0.5888,
+          "preview": "98 for recommendation of uniform consumer end tariff. The said Motion was decided by the Authority on July 11, 2024 and was subsequently notified by the Federal"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 186,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 3,
+          "score": 0.5392,
+          "preview": "les growth. PESCO attributed its improved sales to both reduction in tariff by Rs. 7.7/kWh and captive power shifting. QESCO reported a decline in agricultural "
+        },
+        {
+          "rank": 3,
+          "chunk_id": 233,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 3,
+          "score": 0.5259,
+          "preview": "g to its sales growth. PESCO attributed its improved sales to both reduction in tariff by Rs. 7.7/kWh and captive power shifting. QESCO reported a decline in ag"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 179,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 2,
+          "score": 0.5003,
+          "preview": "or recommendation of uniform consumer end tariff. The said Motion was decided by the Authority on July 11, 2024 and was subsequently notified by the Federal Gov"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 73,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 19,
+          "score": 0.4922,
+          "preview": "arry out its operations. In FY 2025-26, an increase of 5% is requested as per the rental agreement. Further, CPPA-G also holds around 1,589 square feet of space"
+        },
+        {
+          "rank": 6,
+          "chunk_id": 116,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 26,
+          "score": 0.4887,
+          "preview": "ance Charges Determined 3 Actual 3 (0) R&M & IT Services Determined 145 Actual 131 (14) Capex Determined 96 Actual 102 6 FY 2024-25 Description Rs in Million Ot"
+        },
+        {
+          "rank": 7,
+          "chunk_id": 85,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 21,
+          "score": 0.4883,
+          "preview": "FY 2024-25. Accordingly, the Petitioner requested the Authority to approve Rs. 59 million under the head of other administrative costs and a total of Rs. 316 mi"
+        },
+        {
+          "rank": 8,
+          "chunk_id": 115,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 26,
+          "score": 0.4857,
+          "preview": "'I 1 Determination?).fthe Authority in the matter1 ofpetition filed by-CP-PA-^i-* ............................................................. ’ .............."
+        },
+        {
+          "rank": 9,
+          "chunk_id": 232,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 3,
+          "score": 0.4775,
+          "preview": "r 20% growth observed during the current quarter, again attributed to the onboarding of captive power consumers. HESCO also submitted an increase in industrial "
+        },
+        {
+          "rank": 10,
+          "chunk_id": 87,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 21,
+          "score": 0.4775,
+          "preview": "r than the requested amount of Rs. 8 million for FY 2024-25 and reflects rationalization efforts. Accordingly, the Authority has been requested to approve the p"
+        }
+      ]
+    },
+    {
+      "id": "q004",
+      "question": "What was the total negative quarterly adjustment allowed across all XWDISCOs for Q4 FY 2024-25?",
+      "failure_mode": "aggregation",
+      "expected_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "expected_page": 1,
+      "scored": true,
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": true,
+      "hit@10": true,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": 247,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 6,
+          "score": 0.6965,
+          "preview": "o Decision of the Authority in the matter of requests filed byXWDlSCOs regarding periodic adjustment in the Tariff 25^2 • ' 15. In light of the above discussion"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 200,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 6,
+          "score": 0.675,
+          "preview": "Decision oftheAuthorir/th the matter ofrequests Bled by DISCOs regarding periodic adjusent in the Tath 15. In light of the above discussion, information submitt"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 248,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 6,
+          "score": 0.672,
+          "preview": "e discussion made in the above paragraphs and after considering the aforementioned adjustments, the Authority has determined separate quarterly adjustments of e"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 201,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 6,
+          "score": 0.6631,
+          "preview": "the above paragraphs and after considering the aforementioned adjustments, the Authority has determined separate quarterly adjustments of each DISCO after accou"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 175,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 1,
+          "score": 0.6442,
+          "preview": " decided to allow negative quarterly adjustments of Rs.55,874 million pertaining to the quarter of the FY 2024-25, in a period of 03 months i.e. August 2025 to "
+        },
+        {
+          "rank": 6,
+          "chunk_id": 125,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 28,
+          "score": 0.5835,
+          "preview": "der each head, subject to downward adjustment only, once the Audited accounts of the Petitioner for the FY 2023 24 are available. - However, other income and ta"
+        },
+        {
+          "rank": 7,
+          "chunk_id": 167,
+          "source_doc": "SRO 1390(I)-2026 Dated 10-08-2026",
+          "source_page": 6,
+          "score": 0.5679,
+          "preview": "he Authority has worked out a negative amount of Rs. 51.72 million considering actual net recovery of Rs.35 million (total disbursed less recovered) against its"
+        },
+        {
+          "rank": 8,
+          "chunk_id": 297,
+          "source_doc": "TRF-615 CPPA G MARKET OPERATOR FEE FOR FY 2024-25 08-07-2026 11317-20",
+          "source_page": 6,
+          "score": 0.5584,
+          "preview": "at the Authority has worked out a negative amount of Rs. 51.72 million considering actual net recovery of Rs.35 million (total disbursed less recovered) against"
+        },
+        {
+          "rank": 9,
+          "chunk_id": 227,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 2,
+          "score": 0.5515,
+          "preview": "77) (3.319) 3,057 (653) (2,883) (53.714) Variable O&M 28 (5) 13 (45) 1 64 29 14 78 5 182 UoSC &MoF (549) 41 (107) 126 (15) 61 676 540 111 (80) 804 Impact of T&D"
+        },
+        {
+          "rank": 10,
+          "chunk_id": 276,
+          "source_doc": "TRF-615 CPPA G MARKET OPERATOR FEE FOR FY 2024-25 08-07-2026 11317-20",
+          "source_page": 3,
+          "score": 0.5491,
+          "preview": "Decision of the Authority in the matter of MLR Sled by CPPA-G against $nep; determination of Market Operation Fee for the FY2024-25 ‘The Petitioner has requeste"
+        }
+      ]
+    },
+    {
+      "id": "q005",
+      "question": "Which period does the 4th quarter of FY 2024-25 cover?",
+      "failure_mode": "temporal_disambiguation",
+      "expected_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "expected_page": 1,
+      "scored": true,
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "hit@10": true,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": 241,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 4,
+          "score": 0.4118,
+          "preview": "Pursuant thereto, the MoE presented detail of circular debt for FY 2024-25 wherein it was informed that circular debt has reduced from Rs. 2.39 trillion in June"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 200,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 6,
+          "score": 0.3988,
+          "preview": "Decision oftheAuthorir/th the matter ofrequests Bled by DISCOs regarding periodic adjusent in the Tath 15. In light of the above discussion, information submitt"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 247,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 6,
+          "score": 0.3946,
+          "preview": "o Decision of the Authority in the matter of requests filed byXWDlSCOs regarding periodic adjustment in the Tariff 25^2 • ' 15. In light of the above discussion"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 299,
+          "source_doc": "TRF-615 CPPA G MARKET OPERATOR FEE FOR FY 2024-25 08-07-2026 11317-20",
+          "source_page": 6,
+          "score": 0.3703,
+          "preview": " part MOF Determination for FY 2025-26 as PYA;"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 169,
+          "source_doc": "SRO 1390(I)-2026 Dated 10-08-2026",
+          "source_page": 6,
+          "score": 0.3703,
+          "preview": "part MOF Determination for FY 2025-26 as PYA;"
+        },
+        {
+          "rank": 6,
+          "chunk_id": 194,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 4,
+          "score": 0.3613,
+          "preview": "nt thereto, the MoE presented detail of circular debt for FT 2024-25 wherein it was informed that circular debt has reduced from Rs. 2.39 trillion in June 2024 "
+        },
+        {
+          "rank": 7,
+          "chunk_id": 240,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 4,
+          "score": 0.3419,
+          "preview": "plore alternative mechanisms for collecting provincial levies and duties rather than relying on electricity bills. Therefore, electricity duty remains applicabl"
+        },
+        {
+          "rank": 8,
+          "chunk_id": 193,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 4,
+          "score": 0.3371,
+          "preview": "alternative mechanisms for collecting provincial levies and duties rather than relying on electricity bills. Therefore, electricity duty remains applicable. Reg"
+        },
+        {
+          "rank": 9,
+          "chunk_id": 179,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 2,
+          "score": 0.3261,
+          "preview": "or recommendation of uniform consumer end tariff. The said Motion was decided by the Authority on July 11, 2024 and was subsequently notified by the Federal Gov"
+        },
+        {
+          "rank": 10,
+          "chunk_id": 174,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 1,
+          "score": 0.3068,
+          "preview": "TO BE PUBLISHED IN THE GAZETTE OF PAKISTAN EXTRA ORDINARY, PART-I National Electric Power Regulatory Authority NOTIFICATION -ti-ti Islamabad, the7 day of August"
+        }
+      ]
+    },
+    {
+      "id": "q006",
+      "question": "How much was the capacity charge reduction attributed to debt reprofiling of the K-2 and K-3 nuclear plants?",
+      "failure_mode": "unit_in_header",
+      "expected_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "expected_page": 2,
+      "scored": true,
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "hit@10": true,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": 230,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 3,
+          "score": 0.5462,
+          "preview": "Decision of the A uthoiityin the matter of requests hied byXWDISCOs regarding periodic adjustment in the Tariff Maior Reason for Capacity Reductions Rs. Bln Ter"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 183,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 3,
+          "score": 0.5279,
+          "preview": "Decision of the Authothylu the matter a/requests filed &vfl'VZSCOs regardLagpthothcadjusentth the Tanif Major Reason for Cavacity Reductions Rs. Bin Termination"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 195,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 5,
+          "score": 0.4834,
+          "preview": "Decision of the Authothyth the matter ofrequests filed by If4'DZSCOs regardthgpthodzc adjuseatth the Taziff Circular Debt Details as of PKR Billion) Jul 23-Jun "
+        },
+        {
+          "rank": 4,
+          "chunk_id": 242,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 5,
+          "score": 0.4557,
+          "preview": "Decision of Che Authority in the matter ofrequests fled by XWDISCOs regardingperiodic adjustment in the Tariff Circular Debt Details as of (PKR Billion) Jul 23-"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 198,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 5,
+          "score": 0.4369,
+          "preview": "elied upon. In case of any variation, error, omission or misstatement found out at a later stage, CPPA-G shall be responsible and the same would be adjusted in "
+        },
+        {
+          "rank": 6,
+          "chunk_id": 182,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 2,
+          "score": 0.4327,
+          "preview": " APTMA vide letter dated 01.08.2025, raised certain points regarding category-wise industrial load consumption including captive load transition to the national"
+        },
+        {
+          "rank": 7,
+          "chunk_id": 229,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 2,
+          "score": 0.4258,
+          "preview": " 6. APTMA vide letter dated 01.08.2025, raised certain points regarding category-wise industrial load consumption including captive load transition to the natio"
+        },
+        {
+          "rank": 8,
+          "chunk_id": 245,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 5,
+          "score": 0.4157,
+          "preview": "along-with certification of CPPA-G has been relied upon. In case of any variation, error, omission or misstatement found out at a later stage, CPPA-G shall be r"
+        },
+        {
+          "rank": 9,
+          "chunk_id": 112,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 25,
+          "score": 0.4069,
+          "preview": "mount of Rs. 236 million (loan amount Rs 409 million less estimated recovery 173 million up to June 2026) for FY 2025-26 for loan advances to employees. 7.4.4. "
+        },
+        {
+          "rank": 10,
+          "chunk_id": 194,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 4,
+          "score": 0.3904,
+          "preview": "nt thereto, the MoE presented detail of circular debt for FT 2024-25 wherein it was informed that circular debt has reduced from Rs. 2.39 trillion in June 2024 "
+        }
+      ]
+    },
+    {
+      "id": "q007",
+      "question": "What was the circular debt payable to power producers for FY 2023-24, and for FY 2024-25?",
+      "failure_mode": "small_text_extraction",
+      "expected_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "expected_page": 4,
+      "scored": true,
+      "hit@1": false,
+      "hit@3": true,
+      "hit@5": true,
+      "hit@10": true,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": 241,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 4,
+          "score": 0.7329,
+          "preview": "Pursuant thereto, the MoE presented detail of circular debt for FY 2024-25 wherein it was informed that circular debt has reduced from Rs. 2.39 trillion in June"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 194,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 4,
+          "score": 0.71,
+          "preview": "nt thereto, the MoE presented detail of circular debt for FT 2024-25 wherein it was informed that circular debt has reduced from Rs. 2.39 trillion in June 2024 "
+        },
+        {
+          "rank": 3,
+          "chunk_id": 193,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 4,
+          "score": 0.6915,
+          "preview": "alternative mechanisms for collecting provincial levies and duties rather than relying on electricity bills. Therefore, electricity duty remains applicable. Reg"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 240,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 4,
+          "score": 0.6732,
+          "preview": "plore alternative mechanisms for collecting provincial levies and duties rather than relying on electricity bills. Therefore, electricity duty remains applicabl"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 195,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 5,
+          "score": 0.6566,
+          "preview": "Decision of the Authothyth the matter ofrequests filed by If4'DZSCOs regardthgpthodzc adjuseatth the Taziff Circular Debt Details as of PKR Billion) Jul 23-Jun "
+        },
+        {
+          "rank": 6,
+          "chunk_id": 242,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 5,
+          "score": 0.6253,
+          "preview": "Decision of Che Authority in the matter ofrequests fled by XWDISCOs regardingperiodic adjustment in the Tariff Circular Debt Details as of (PKR Billion) Jul 23-"
+        },
+        {
+          "rank": 7,
+          "chunk_id": 133,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 30,
+          "score": 0.5378,
+          "preview": "itrations and their status and also those cases filed against NEPRA as part of Quarterly adjustment data on the below format: Sr. Party Case d In at i e tiation"
+        },
+        {
+          "rank": 8,
+          "chunk_id": 112,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 25,
+          "score": 0.5198,
+          "preview": "mount of Rs. 236 million (loan amount Rs 409 million less estimated recovery 173 million up to June 2026) for FY 2025-26 for loan advances to employees. 7.4.4. "
+        },
+        {
+          "rank": 9,
+          "chunk_id": 281,
+          "source_doc": "TRF-615 CPPA G MARKET OPERATOR FEE FOR FY 2024-25 08-07-2026 11317-20",
+          "source_page": 3,
+          "score": 0.5194,
+          "preview": "related to actual Tax paid during the FY 2024-25 and approve the shortfall amount of Rs.95.2 million. (Actual paid million, Allowed Rs.140 million). 45\\ j\\ao \\ "
+        },
+        {
+          "rank": 10,
+          "chunk_id": 168,
+          "source_doc": "SRO 1390(I)-2026 Dated 10-08-2026",
+          "source_page": 6,
+          "score": 0.5166,
+          "preview": " Rs.51.72 million to accurately reflect the actual position with respect to Loan to Employees during FY 2023-24. 8.2. The Audited Accounts for the relevant year"
+        }
+      ]
+    },
+    {
+      "id": "q008",
+      "question": "On what date did the Authority decide the Federal Government's Motion for a uniform consumer-end tariff?",
+      "failure_mode": "temporal_disambiguation",
+      "expected_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25",
+      "expected_page": 1,
+      "scored": true,
+      "hit@1": false,
+      "hit@3": false,
+      "hit@5": false,
+      "hit@10": false,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": 225,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 2,
+          "score": 0.6502,
+          "preview": "Decision of the Authority in the matter ofrequests Bled by XWDISCOs regarding periodic adjustment in the Tariff DECISION OF THE AUTHORITY IN THE MATTER OF REQUE"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 178,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 2,
+          "score": 0.633,
+          "preview": "Decision of the Authozicyth the matter ofrequests filed byIWDISCOs regardlag pen'oth'c adjusiearia the Tariff DECISION OF THE AUTHORITY 114 THE MA.1 rut OF REQU"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 179,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 2,
+          "score": 0.617,
+          "preview": "or recommendation of uniform consumer end tariff. The said Motion was decided by the Authority on July 11, 2024 and was subsequently notified by the Federal Gov"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 252,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 6,
+          "score": 0.5962,
+          "preview": "e determined tariff for K-Electric consumers shall be assessed on an annual basis instead of monthly or quarterly basis. Hi. Federal Government's motion with re"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 8,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 5,
+          "score": 0.5885,
+          "preview": "is ultimately to be reflected in the consumer-end tariff, the Authority, in order to ensure due process, and uphold the principles of natural justice, decided t"
+        },
+        {
+          "rank": 6,
+          "chunk_id": 205,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 6,
+          "score": 0.5359,
+          "preview": "fmonthly or quarterly basis. liii Federal Government s motion th respect to recommendation of consumer end tarifffor K- Electric Limited dated March JZ 2023 pur"
+        },
+        {
+          "rank": 7,
+          "chunk_id": 204,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 6,
+          "score": 0.5316,
+          "preview": "same application period. The Policy Guidelines are reproduced hereunder: I. In order to maintain tin (form tanff across country, NEPR.4 shall determine applicat"
+        },
+        {
+          "rank": 8,
+          "chunk_id": 251,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 6,
+          "score": 0.5229,
+          "preview": "ame tariff rationalization for K-Electric consumers as determined for XWDISCOs consumers, with same application period. The Policy Guidelines are reproduced her"
+        },
+        {
+          "rank": 9,
+          "chunk_id": 269,
+          "source_doc": "TRF-615 CPPA G MARKET OPERATOR FEE FOR FY 2024-25 08-07-2026 11317-20",
+          "source_page": 1,
+          "score": 0.5041,
+          "preview": "w_filed by Central Power Purchasing Agency (Guarantee) Limited (CPPA-G) against Determination of Market Operation Fee for the FY 2024-25 in Case No. NEPRA/TRF- "
+        },
+        {
+          "rank": 10,
+          "chunk_id": 226,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 2,
+          "score": 0.4984,
+          "preview": "98 for recommendation of uniform consumer end tariff. The said Motion was decided by the Authority on July 11, 2024 and was subsequently notified by the Federal"
+        }
+      ]
+    },
+    {
+      "id": "q009",
+      "question": "What market operation fee per kW per month did the Authority ALLOW CPPA-G for FY 2024-25, including legal charges?",
+      "failure_mode": "refusal",
+      "expected_doc": "TRF-615 CPPA-G MARKET OPERATOR FEE FOR FY 2024-25",
+      "expected_page": null,
+      "scored": false,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": 5,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 5,
+          "score": 0.7461,
+          "preview": "iRgpfa; Determination of the Authority in the matter of petition fled by CPPA-G- for determination of Market Operation Fee for the FY2025-26 T3--I-. ____J 1.1. "
+        },
+        {
+          "rank": 2,
+          "chunk_id": 90,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 22,
+          "score": 0.7357,
+          "preview": "electrical fixtures, gardening services, lift maintenance, and other miscellaneous expenses. The Petitioner further stated that these expenses have been rationa"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 2,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 2,
+          "score": 0.7126,
+          "preview": "Jiwprai Determmau -o of the -minority w die matter of petition filed by CPPA-G for detemu-iadon of Market Operation Fee for the FY2025-26 National Electric Powe"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 271,
+          "source_doc": "TRF-615 CPPA G MARKET OPERATOR FEE FOR FY 2024-25 08-07-2026 11317-20",
+          "source_page": 2,
+          "score": 0.7118,
+          "preview": "|•f f tep*; Decisia&cfthe Authority in the matter of MLR filed by CPPA-G against determination of Market Operation Fee for the FY2024-25 DECISION OF THE AUTHORI"
+        },
+        {
+          "rank": 5,
+          "chunk_id": 141,
+          "source_doc": "SRO 1390(I)-2026 Dated 10-08-2026",
+          "source_page": 2,
+          "score": 0.7108,
+          "preview": "DecisiQB-ofrfaAuchcirityL'i theinauer ■ ^'MLR /v ■' by CP'.‘A-Gqgamsi determination of Market Operation s for the FY2024-25 >1 DECISION of THE AUTHORITY IN THE "
+        },
+        {
+          "rank": 6,
+          "chunk_id": 3,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 3,
+          "score": 0.6988,
+          "preview": "Determination Ofthe Authority m the natter of petition filed by CPPA-G ' for determination of Market Operation Fee for the FY2025-26 CENTRAL POWER PURCHASING AG"
+        },
+        {
+          "rank": 7,
+          "chunk_id": 91,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 22,
+          "score": 0.6964,
+          "preview": "gly, CPPA-G has requested the Authority to approve an amount of Rs. 199 million under the head of IT Services for FY 2025-26. v' Vehicle Running cost: CPPA-G su"
+        },
+        {
+          "rank": 8,
+          "chunk_id": 128,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 29,
+          "score": 0.6854,
+          "preview": "loyees 409 40938 Recovery of loan (173) •..(173.21) Legal Charges CAPEX (Min Rs.)_____________ 164 - •\".'163.88 Net Revenue___________________ ______4,664 -.. ■"
+        },
+        {
+          "rank": 9,
+          "chunk_id": 64,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 17,
+          "score": 0.6811,
+          "preview": "ut these activities through its own HR department. 7.1.19. Regarding the testing service, the Authority understands that only a nominal fee is charged from the "
+        },
+        {
+          "rank": 10,
+          "chunk_id": 94,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 23,
+          "score": 0.6745,
+          "preview": "ft\" ^ 'h |Rfip; • \"Deterx. sdon of the Authority hi thvmatmofpetition&leibby CPPArG. for determination of Market Operation Fee for the FY2025-26 _V1 Environment"
+        }
+      ]
+    },
+    {
+      "id": "q010",
+      "question": "What was the quarterly tariff adjustment for FESCO in the 1st quarter of FY 2025-26?",
+      "failure_mode": "refusal",
+      "expected_doc": null,
+      "expected_page": null,
+      "scored": false,
+      "retrieved": [
+        {
+          "rank": 1,
+          "chunk_id": 226,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 2,
+          "score": 0.6799,
+          "preview": "98 for recommendation of uniform consumer end tariff. The said Motion was decided by the Authority on July 11, 2024 and was subsequently notified by the Federal"
+        },
+        {
+          "rank": 2,
+          "chunk_id": 179,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 2,
+          "score": 0.6798,
+          "preview": "or recommendation of uniform consumer end tariff. The said Motion was decided by the Authority on July 11, 2024 and was subsequently notified by the Federal Gov"
+        },
+        {
+          "rank": 3,
+          "chunk_id": 247,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 6,
+          "score": 0.6068,
+          "preview": "o Decision of the Authority in the matter of requests filed byXWDlSCOs regarding periodic adjustment in the Tariff 25^2 • ' 15. In light of the above discussion"
+        },
+        {
+          "rank": 4,
+          "chunk_id": 6,
+          "source_doc": "SRO 1248 (I)2026 Dated 29-07-2026",
+          "source_page": 5,
+          "score": 0.5333,
+          "preview": " including PYA and MLR. ii. To allow legal charges through periodic adjustments in the tariff of XWDISCOs. iii. To allow the actualization of expenditure based "
+        },
+        {
+          "rank": 5,
+          "chunk_id": 227,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 2,
+          "score": 0.5307,
+          "preview": "77) (3.319) 3,057 (653) (2,883) (53.714) Variable O&M 28 (5) 13 (45) 1 64 29 14 78 5 182 UoSC &MoF (549) 41 (107) 126 (15) 61 676 540 111 (80) 804 Impact of T&D"
+        },
+        {
+          "rank": 6,
+          "chunk_id": 205,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 6,
+          "score": 0.5222,
+          "preview": "fmonthly or quarterly basis. liii Federal Government s motion th respect to recommendation of consumer end tarifffor K- Electric Limited dated March JZ 2023 pur"
+        },
+        {
+          "rank": 7,
+          "chunk_id": 231,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 3,
+          "score": 0.5187,
+          "preview": "hat major reason for this increase is due to shifting of captive power plants to national grid. Further, reduction in tariff during April to June 2025 also cont"
+        },
+        {
+          "rank": 8,
+          "chunk_id": 248,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 6,
+          "score": 0.5153,
+          "preview": "e discussion made in the above paragraphs and after considering the aforementioned adjustments, the Authority has determined separate quarterly adjustments of e"
+        },
+        {
+          "rank": 9,
+          "chunk_id": 201,
+          "source_doc": "SRO 1468 XWDISCOs 4th QTR FY 2024-25 Dated 07-08-2025",
+          "source_page": 6,
+          "score": 0.5059,
+          "preview": "the above paragraphs and after considering the aforementioned adjustments, the Authority has determined separate quarterly adjustments of each DISCO after accou"
+        },
+        {
+          "rank": 10,
+          "chunk_id": 240,
+          "source_doc": "TRF-100 XWDISCOS PERIODIC ADJUSTMENT FY 2024-25 07-08-2025 12380-83",
+          "source_page": 4,
+          "score": 0.4968,
+          "preview": "plore alternative mechanisms for collecting provincial levies and duties rather than relying on electricity bills. Therefore, electricity duty remains applicabl"
+        }
+      ]
+    }
+  ]
+}
